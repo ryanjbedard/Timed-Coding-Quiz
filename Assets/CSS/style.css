@@ -1,0 +1,9 @@
+#Header {
+    display: flex;
+}
+
+#Timer {
+    flex: 1;
+    padding-right: 40px;
+    text-align: right;
+}
