@@ -7,17 +7,22 @@
         <link rel="stylesheet" href="./Assets/CSS/style.css">
     </head>
     <body>
-        <body>
+        <main>
             <header id=Header>
-                <p>View High Score</p>
+                <a id="view-high-scores">View High Score</a>
                 <p id="Timer"></p>
             </header>
-            <main>
-                <h1>Coding Quiz Challenge</h1>
-                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
-                <button>Start Quiz</button>
-            </main>
+            <section class="Quiz">
+                <div>
+                    <h1>Coding Quiz</h1>
+                    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
+                    <button id="startBtn">Start Quiz</button>
+                </div>
+                <div id="questions" class="hide">
+
+                </div>
+            </section>
             <script src="./Assets/JS/script.js"></script>
-        </body>
+        </main>
     </body>
 </html>
