@@ -15,6 +15,7 @@ N/A
 Follow the link below and click the 'Start Quiz' button. Starting the quiz will make a 90 second timer appear. Try to answer all of the questions correctly. If you answer wrong, your time will be penalized by 10 seconds.
 
 ![alt text](./Assets/Images/Screenshot%202023-11-13%20231223.png)
+https://ryanjbedard.github.io/Timed-Coding-Quiz/
 
 ## Credits
 
