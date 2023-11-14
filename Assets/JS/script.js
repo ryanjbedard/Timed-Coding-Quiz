@@ -67,6 +67,25 @@ function startQuiz() {
   startScreenElm.setAttribute("class", "hide");
   questionsScreenElm.removeAttribute("class");
   getQuestion();
+  function timer() {
+        var timerValue = 90;
+    
+        var timeInterval = setInterval(function () {
+          timerValue--;
+          timerEl.textContent = "Time: " + timerValue;
+    
+          if (timerValue === 0) {
+            clearInterval(timeInterval);
+          } else if (timerValue < 0) {
+            clearInterval(timeInterval);
+            timerValue = 0;
+          }
+          if (answer !== true) {
+            timerValue - 10000;
+          }
+        }, 1000);
+      }
+      timer();
 }
 
 function getQuestion() {
