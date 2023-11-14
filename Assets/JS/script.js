@@ -1,5 +1,5 @@
 var timerEl = document.getElementById("Timer");
-var startBtn = document.querySelector("startBtn");
+var startBtn = document.querySelector("#startBtn");
 
 function startQuiz() {
   var questionOne = "Inside which HTML elment do we put the JavaScript?";
@@ -33,21 +33,24 @@ function startQuiz() {
   ];
 
   function timer() {
-    var timerEl = 90;
+    var timerValue = 90;
 
     var timeInterval = setInterval(function () {
-      timerEl--;
-      timerEl.textContent = "Time: " + timerEl;
+      timerValue--;
+      timerEl.textContent = "Time: " + timerValue;
 
-      if (timerEl === 0) {
+      if (timerValue === 0) {
         clearInterval(timeInterval);
+      } else if (timerValue<0) {
+        clearInterval(timeInterval);
+        timerValue = 0;
       }
-      if (answer !== correct) {
-        timerEl - 10000;
+      if (answer !== true) {
+        timerValue - 10000;
       }
     }, 1000);
   }
-  //   function
+timer();
 }
-startQuiz;
-starBtn.addEventListener("click", startQuiz);
+// startQuiz;
+startBtn.addEventListener("click", startQuiz);
