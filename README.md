@@ -24,4 +24,4 @@ https://www.youtube.com/watch?v=xZXW5SnCiWI
 
 ## License
 
-This project uses a standard MIT license.
+N/A
