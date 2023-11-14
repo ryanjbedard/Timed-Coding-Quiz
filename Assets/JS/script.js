@@ -2,35 +2,37 @@ var timerEl = document.getElementById("Timer");
 var startBtn = document.querySelector("#startBtn");
 
 function startQuiz() {
-  var questionOne = "Inside which HTML elment do we put the JavaScript?";
-  var questionTwo =
-    "What is the correct syntax for referring to an external script called 'xxx.js'?";
-  var questionThree = "How do you write 'Hello World' in an alert box?";
-  var questionFour = "How do you create a function in JavaScript?";
-  var questions = [questionOne, questionTwo, questionThree, questionFour];
-  var questionOneAnswers = ["<script>", "<javascript>", "<js>", "<scripting>"];
-  var questionTwoAnswers = [
-    "<script href='xxx.js'>",
-    "<script name='xxx.js'>",
-    "<script src='xxx.js'>",
-  ];
-  var questionThreeAnswers = [
-    "alert('Hello World');",
-    "alertBox('Hello World');",
-    "msgBox('Hello World');",
-    "msg('Hello World');",
-  ];
-  var questionFourAnswers = [
-    "function myFunction()",
-    "function = myFunction()",
-    "function:myFunction()",
-  ];
-  var answers = [
-    questionOneAnswers,
-    questionTwoAnswers,
-    questionThreeAnswers,
-    questionFourAnswers,
-  ];
+  var questionOne = {
+    Question: "Inside which HTML elment do we put the JavaScript?",
+    A: "<script>",
+    B: "<javascript>",
+    C: "<js>",
+    D: "<scripting>",
+    Answer: "<script>",
+  };
+  var questionTwo = {
+    Question:
+      "What is the correct syntax for referring to an external script called 'xxx.js'?",
+    A: "<script href='xxx.js'>",
+    B: "<script name='xxx.js'>",
+    C: "<script src='xxx.js'>",
+    Answer: "<script src='xxx.js'>",
+  };
+  var questionThree = {
+    Question: "How do you write 'Hello World' in an alert box?",
+    A: "alert('Hello World');",
+    B: "alertBox('Hello World');",
+    C: "msgBox('Hello World');",
+    D: "msg('Hello World');",
+    Answer: "alert('Hello World');",
+  };
+  var questionFour = {
+    Question: "How do you create a function in JavaScript?",
+    A: "function myFunction()",
+    B: "function = myFunction()",
+    C: "function:myFunction()",
+    Answer: "function myFunction()",
+  };
 
   function timer() {
     var timerValue = 90;
@@ -41,7 +43,7 @@ function startQuiz() {
 
       if (timerValue === 0) {
         clearInterval(timeInterval);
-      } else if (timerValue<0) {
+      } else if (timerValue < 0) {
         clearInterval(timeInterval);
         timerValue = 0;
       }
@@ -50,7 +52,7 @@ function startQuiz() {
       }
     }, 1000);
   }
-timer();
+  timer();
 }
 // startQuiz;
 startBtn.addEventListener("click", startQuiz);
