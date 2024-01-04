@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width device-width, initial-scale=1.0">
-        <Title>Timed Coding Quiz Challenge</Title>
-        <link rel="stylesheet" href="./Assets/CSS/style.css">
-    </head>
-    <body>
-        <header id=Header>
-            <a id="view-high-scores">View High Score</a>
-            <p id="Timer"></p>
-        </header>
-        <main>
-                <div id="start-screen">
-                    <h1>Coding Quiz</h1>
-                    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
-                    <button id="startBtn">Start Quiz</button>
-                </div>
-                <div id="questions" class="hide">
-                    <h2 id="question-title">
-                        <!-- Questions from JavaScript -->
-                    </h2>
-                    <div id="choices" class="choices">
-                        <!-- Answer options from JavaScript -->
-                    </div>
-                </div>
-                <div id="end-screen" class="hide">
-                    <h2>Results</h2>
-                    <input type="text" placeholder="Enter initials"/>
-                </div>
-        </main>
-        <!-- Result Box -->
-        <!-- <div class="result_box">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width device-width, initial-scale=1.0" />
+    <title>Timed Coding Quiz Challenge</title>
+    <link rel="stylesheet" href="./Assets/CSS/style.css" />
+  </head>
+  <body>
+    <header id="Header">
+      <a id="view-high-scores">View High Score</a>
+      <p id="Timer"></p>
+    </header>
+    <main>
+      <div id="start-screen">
+        <h1>Coding Quiz</h1>
+        <p>
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your score
+          time by ten seconds!
+        </p>
+        <button id="startBtn">Start Quiz</button>
+      </div>
+      <div id="questions" class="hide">
+        <h2 id="question-title">
+          <!-- Questions from JavaScript -->
+        </h2>
+        <div id="choices" class="choices">
+          <!-- Answer options from JavaScript -->
+        </div>
+      </div>
+      <div id="end-screen" class="hide">
+        <h2>Results</h2>
+        <input type="text" placeholder="Enter initials" />
+        <button id="submit">submit</button>
+      </div>
+      <div id="scores" class="hide"></div>
+    </main>
+    <!-- Result Box -->
+    <!-- <div class="result_box">
             <div class="result_box">
                 <div class="icon">
                     <i class="fas fa-crown"></i>
@@ -39,9 +45,9 @@
             </div>
             <div class="complete_text">You've completed the Quiz!</div>
             <div class="score_text"> -->
-                <!-- Score results from JavaScript. -->
-            <!-- </div>
+    <!-- Score results from JavaScript. -->
+    <!-- </div>
         </div> -->
-        <script src="./Assets/JS/script.js"></script>
-    </body>
+    <script src="./Assets/JS/script.js"></script>
+  </body>
 </html>

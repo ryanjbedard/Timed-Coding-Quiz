@@ -10,50 +10,62 @@ var questionsArray = [
     answer: "<script>",
   },
   {
-    questionText: "What is the correct syntax for referring to an external script called 'xxx.js'",
-    choices: ["<script href='xxx.js'>", "<script name='xxx.js'>", "<script src='xxx.js'>"],
+    questionText:
+      "What is the correct syntax for referring to an external script called 'xxx.js'",
+    choices: [
+      "<script href='xxx.js'>",
+      "<script name='xxx.js'>",
+      "<script src='xxx.js'>",
+    ],
     answer: "<script name='xxx.js'>",
   },
   {
     questionText: "How do you write 'Hello World' in an alert box?",
-    choices: ["alert('Hello World');", "alertBox('Hello World');", "msgBox('Hello World');", "msg('Hello World');"],
+    choices: [
+      "alert('Hello World');",
+      "alertBox('Hello World');",
+      "msgBox('Hello World');",
+      "msg('Hello World');",
+    ],
     answer: "alert('Hello World')",
   },
   {
     questionText: "How do you create a function in JavaScript?",
-    choices: ["function myFunction()", "function = myFunction()", "function:myFunction()"],
+    choices: [
+      "function myFunction()",
+      "function = myFunction()",
+      "function:myFunction()",
+    ],
     answer: "function myFunction()",
-  }
+  },
 ];
 var currentQuestionIndex = 0;
+var timerValue = 90;
 
+var timeInterval;
 // starts the quiz
 function startQuiz() {
   var startScreenElm = document.querySelector("#start-screen");
-  startScreenElm.setAttribute("class", "hide");
-  questionsScreenElm.removeAttribute("class");
+  startScreenElm.classList.add('hide')
+  questionsScreenElm.classList.remove("hide");
   getQuestion();
-  function timer() {
-    var timerValue = 90;
-
-    var timeInterval = setInterval(function () {
-      timerValue--;
-      timerEl.textContent = "Time: " + timerValue;
-
-      if (timerValue === 0) {
-        clearInterval(timeInterval);
-      } else if (timerValue < 0) {
-        clearInterval(timeInterval);
-        timerValue = 0;
-      }
-      if (answer !== true) {
-        timerValue - 10000;
-      }
-    }, 1000);
-  }
   timer();
 }
 
+function timer() {
+  timerEl.textContent = "Time: " + timerValue;
+
+  timeInterval = setInterval(function () {
+    timerValue--;
+    timerEl.textContent = "Time: " + timerValue;
+
+    if (timerValue <= 0) {
+      clearInterval(timeInterval);
+      timerValue = 0
+    } 
+
+  }, 1000);
+}
 function getQuestion() {
   var currentQuestionObj = questionsArray[currentQuestionIndex];
   console.log(currentQuestionObj);
@@ -61,44 +73,51 @@ function getQuestion() {
   questionTitleElm.textContent = currentQuestionObj.questionText;
   choicesElm.innerHTML = "";
   for (var i = 0; i < currentQuestionObj.choices.length; i++) {
+
     var choiceBtn = document.createElement("button");
+
     var currentChoice = currentQuestionObj.choices[i];
     choiceBtn.textContent = currentChoice;
     choiceBtn.setAttribute("value", currentChoice);
+
+    choiceBtn.addEventListener('click', function(){
+      console.log(this.textContent);
+      currentQuestionIndex++;
+
+     
+      if(questionsArray.length === currentQuestionIndex){
+    gameOver()
+        // run game over function
+      }else{
+        getQuestion()
+      }
+    })
+
     choicesElm.appendChild(choiceBtn);
   }
 }
 
+// create function called gameover
 
-  // function questionOneDisplay(questionOne) {
-  //   questionOne.A.textContent = answerA;
-  //   questionOne.B.textContent = answerB;
-  //   questionOne.C.textContent = answerC;
-  //   questionOne.D.textContent = answerD;
-  //   if (answerA.addEventListener("click", questionTwoDisplay)) {
-  //     answer = true;
-  //   } else false;
-  // }
+function gameOver(){
+  // display the user input screen
+  document.querySelector('#end-screen').classList.remove('hide')
+  // hide question screen
+  questionsScreenElm.classList.add("hide");
 
-//   function timer() {
-//     var timerValue = 90;
 
-//     var timeInterval = setInterval(function () {
-//       timerValue--;
-//       timerEl.textContent = "Time: " + timerValue;
 
-//       if (timerValue === 0) {
-//         clearInterval(timeInterval);
-//       } else if (timerValue < 0) {
-//         clearInterval(timeInterval);
-//         timerValue = 0;
-//       }
-//       if (answer !== true) {
-//         timerValue - 10000;
-//       }
-//     }, 1000);
-//   }
-//   timer();
-//   questionOneDisplay();
-// }
+}
+// create a function that will save the initials and score in localStorage
+function saveInitials(){
+  
+// hide the user input
+document.querySelector('#end-screen').classList.add('hide')
+// display high score screen.
+document.querySelector('#scores').classList.remove('hide')
+
+}
+// take user input for initials and save the score to local storage.
+// 
 startBtn.addEventListener("click", startQuiz);
+document.querySelector('#submit').addEventListener("click",saveInitials)
