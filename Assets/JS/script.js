@@ -1,8 +1,13 @@
 console.log("Connected");
+var highScoreElm = document.querySelector("#view-high-score")
+var backBtnElm = document.querySelector("#backBtn")
 var timerEl = document.getElementById("Timer");
 var startBtn = document.querySelector("#startBtn");
 var questionsScreenElm = document.querySelector("#questions");
 var choicesElm = document.querySelector("#choices");
+const initialsElm = document.querySelector('#initialField')
+
+
 var questionsArray = [
   {
     questionText: "Inside which HTML element do we put the JavaScript?",
@@ -43,13 +48,24 @@ var currentQuestionIndex = 0;
 var timerValue = 90;
 
 var timeInterval;
+
+backBtnElm.classList.add('hide');
+highScoreElm.classList.add('hide');
+
 // starts the quiz
 function startQuiz() {
   var startScreenElm = document.querySelector("#start-screen");
-  startScreenElm.classList.add('hide')
+  highScoreElm.classList.add('hide');
+  backBtnElm.classList.add('hide');
+  startScreenElm.classList.add('hide');
   questionsScreenElm.classList.remove("hide");
   getQuestion();
   timer();
+}
+
+function displayMessage(type,message){
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
 }
 
 function timer() {
@@ -59,9 +75,8 @@ function timer() {
     timerValue--;
     timerEl.textContent = "Time: " + timerValue;
 
-    if (timerValue <= 0) {
+    if (timerValue <= 0 || questionsArray.length === currentQuestionIndex) {
       clearInterval(timeInterval);
-      timerValue = 0
     } 
 
   }, 1000);
@@ -83,8 +98,11 @@ function getQuestion() {
     choiceBtn.addEventListener('click', function(){
       console.log(this.textContent);
       currentQuestionIndex++;
-
      
+      // if(currentChoice !== currentQuestionObj.answer){
+      //   return timerValue -10;
+      // }
+
       if(questionsArray.length === currentQuestionIndex){
     gameOver()
         // run game over function
@@ -97,27 +115,36 @@ function getQuestion() {
   }
 }
 
+// create function to check answer:
+
+
 // create function called gameover
 
 function gameOver(){
+
   // display the user input screen
   document.querySelector('#end-screen').classList.remove('hide')
   // hide question screen
   questionsScreenElm.classList.add("hide");
 
-
-
 }
+
 // create a function that will save the initials and score in localStorage
 function saveInitials(){
-  
+  backBtnElm.classList.remove('hide');
+  const initials = initialsElm.value;
+
 // hide the user input
 document.querySelector('#end-screen').classList.add('hide')
 // display high score screen.
 document.querySelector('#scores').classList.remove('hide')
 
+localStorage.setItem('initials', initials)
+localStorage.setItem('time', timerValue)
+
 }
-// take user input for initials and save the score to local storage.
+// take user input for initials and save the score to localStorage.
 // 
+
 startBtn.addEventListener("click", startQuiz);
 document.querySelector('#submit').addEventListener("click",saveInitials)

@@ -8,7 +8,8 @@
   </head>
   <body>
     <header id="Header">
-      <a id="view-high-scores">View High Score</a>
+      <a id="view-high-score">View High Score</a>
+      <button id="backBtn">Back</button>
       <p id="Timer"></p>
     </header>
     <main>
@@ -31,7 +32,7 @@
       </div>
       <div id="end-screen" class="hide">
         <h2>Results</h2>
-        <input type="text" placeholder="Enter initials" />
+        <input type="text" id="initialField" maxlength="3" placeholder="Enter initials" />
         <button id="submit">submit</button>
       </div>
       <div id="scores" class="hide"></div>
