@@ -139,12 +139,26 @@ document.querySelector('#end-screen').classList.add('hide')
 // display high score screen.
 document.querySelector('#scores').classList.remove('hide')
 
-localStorage.setItem('initials', initials)
-localStorage.setItem('time', timerValue)
-
-}
 // take user input for initials and save the score to localStorage.
 // 
+localStorage.setItem('initials', initials)
+localStorage.setItem('time', timerValue)
+}
+//Pull initials and score from local storage and add them to High Score page
+function showHighScore() {
+  const initials = localStorage.getItem('initials', initials)
+  const timeScore = localStorage.getItem('time', timerValue)
+  const highScore = document.getElementById('scores')
+
+  if(timeScore>0) {
+    highScore.innerHTML = `${initials} scored ${timeScore}`
+  }
+  console.log(showHighScore());
+  
+}
+
+
 
 startBtn.addEventListener("click", startQuiz);
-document.querySelector('#submit').addEventListener("click",saveInitials)
+document.querySelector('#submit').addEventListener("click",saveInitials, showHighScore);
+showHighScore();
